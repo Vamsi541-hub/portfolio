@@ -1,4 +1,6 @@
-/* ================= VARIABLES ================= */
+/* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
 
 :root {
 
@@ -9,50 +11,65 @@
     --text: #ffffff;
     --muted: #9ca3b5;
 
-    --border: rgba(255,255,255,0.10);
+    --border: rgba(255, 255, 255, 0.10);
 
     --purple: #8b5cf6;
     --pink: #d946ef;
     --cyan: #22d3ee;
 
     --shadow:
-        0 30px 80px rgba(0,0,0,0.40);
+        0 30px 80px rgba(0, 0, 0, 0.40);
+
+    --navbar-height: 78px;
 
 }
+
+
+/* =========================================================
+   LIGHT THEME
+========================================================= */
 
 body.light {
 
     --background: #f4f6fb;
-    --surface: rgba(255,255,255,0.75);
+
+    --surface: rgba(255, 255, 255, 0.76);
+
     --surface-solid: #ffffff;
 
     --text: #151720;
+
     --muted: #677085;
 
-    --border: rgba(0,0,0,0.10);
+    --border: rgba(0, 0, 0, 0.10);
 
     --shadow:
-        0 20px 70px rgba(60,70,100,0.15);
+        0 20px 70px rgba(60, 70, 100, 0.15);
 
 }
 
 
-/* ================= RESET ================= */
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
 
     margin: 0;
+
     padding: 0;
 
     box-sizing: border-box;
 
 }
 
+
 html {
 
     scroll-behavior: smooth;
 
 }
+
 
 body {
 
@@ -62,73 +79,104 @@ body {
         Helvetica,
         sans-serif;
 
-    background: var(--background);
+    background:
+        var(--background);
 
-    color: var(--text);
+    color:
+        var(--text);
 
-    line-height: 1.6;
+    line-height:
+        1.6;
 
-    overflow-x: hidden;
+    overflow-x:
+        hidden;
 
     transition:
-        background .3s ease,
-        color .3s ease;
+        background 0.3s ease,
+        color 0.3s ease;
 
 }
+
 
 a {
 
-    text-decoration: none;
+    text-decoration:
+        none;
 
-    color: inherit;
+    color:
+        inherit;
 
 }
+
 
 button,
 input,
 textarea {
 
-    font-family: inherit;
+    font-family:
+        inherit;
 
 }
+
 
 button {
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
 }
 
 
-/* ================= NAVBAR ================= */
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .navbar {
 
-    position: fixed;
+    position:
+        fixed;
 
-    top: 0;
-    left: 0;
-    right: 0;
+    top:
+        0;
 
-    height: 78px;
+    left:
+        0;
 
-    display: flex;
+    right:
+        0;
 
-    align-items: center;
+    height:
+        var(--navbar-height);
 
-    justify-content: space-between;
+    display:
+        flex;
 
-    padding: 0 6vw;
+    align-items:
+        center;
 
-    z-index: 1000;
+    justify-content:
+        space-between;
 
-    transition: .3s;
+    padding:
+        0 6vw;
+
+    z-index:
+        1000;
+
+    transition:
+        background 0.3s ease,
+        border 0.3s ease,
+        backdrop-filter 0.3s ease;
 
 }
+
+
+/* Navbar after scrolling */
 
 .navbar.scrolled {
 
     background:
-        rgba(8,9,13,.78);
+        rgba(8, 9, 13, 0.78);
 
     backdrop-filter:
         blur(18px);
@@ -138,65 +186,128 @@ button {
 
 }
 
-.logo {
 
-    font-size: 30px;
+/* Light theme navbar */
 
-    font-weight: 900;
+body.light .navbar.scrolled {
 
-    letter-spacing: -3px;
+    background:
+        rgba(255, 255, 255, 0.78);
 
 }
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    font-size:
+        30px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        -3px;
+
+    line-height:
+        1;
+
+}
+
 
 .logo span {
 
-    color: var(--cyan);
+    color:
+        var(--cyan);
 
 }
 
 
-/* NAVIGATION */
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
 
 nav {
 
-    display: flex;
+    display:
+        flex;
 
-    gap: 30px;
+    align-items:
+        center;
+
+    gap:
+        30px;
 
 }
+
 
 nav a {
 
-    color: var(--muted);
+    position:
+        relative;
 
-    font-size: 14px;
+    color:
+        var(--muted);
 
-    position: relative;
+    font-size:
+        16px;
 
-    transition: .2s;
+    padding:
+        28px 0;
+
+    transition:
+        color 0.25s ease;
 
 }
 
-nav a:hover,
+
+nav a:hover {
+
+    color:
+        var(--text);
+
+}
+
+
+/* Active text */
+
 nav a.active {
 
-    color: var(--text);
+    color:
+        var(--text);
 
 }
+
+
+/* =========================================================
+   NAVIGATION UNDERLINE
+========================================================= */
 
 nav a::after {
 
-    content: "";
+    content:
+        "";
 
-    position: absolute;
+    position:
+        absolute;
 
-    left: 0;
+    left:
+        0;
 
-    bottom: -8px;
+    bottom:
+        18px;
 
-    width: 0;
+    width:
+        0;
 
-    height: 2px;
+    height:
+        3px;
+
+    border-radius:
+        10px;
 
     background:
         linear-gradient(
@@ -205,210 +316,332 @@ nav a::after {
             var(--cyan)
         );
 
-    transition: .25s;
+    transition:
+        width 0.28s ease;
 
 }
+
+
+/*
+    IMPORTANT:
+
+    JavaScript changes the active class.
+    Therefore the underline follows the
+    currently active section.
+*/
 
 nav a.active::after {
 
-    width: 100%;
+    width:
+        100%;
 
 }
 
 
-/* NAV BUTTONS */
+/* =========================================================
+   NAV ACTIONS
+========================================================= */
 
 .nav-actions {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 10px;
+    gap:
+        10px;
 
 }
 
-.theme-btn,
-.menu-btn {
 
-    width: 42px;
+/* =========================================================
+   THEME BUTTON
+========================================================= */
 
-    height: 42px;
+.theme-btn {
+
+    width:
+        52px;
+
+    height:
+        52px;
 
     border:
-
         1px solid var(--border);
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
     background:
         var(--surface);
 
-    color: var(--text);
+    color:
+        var(--text);
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    font-size:
+        18px;
+
+    backdrop-filter:
+        blur(12px);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
 
 }
+
+
+.theme-btn:hover {
+
+    transform:
+        rotate(15deg)
+        scale(1.04);
+
+    border-color:
+        rgba(139, 92, 246, 0.45);
+
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+========================================================= */
 
 .menu-btn {
 
-    display: none;
+    width:
+        45px;
 
-    border-radius: 12px;
+    height:
+        45px;
+
+    display:
+        none;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        12px;
+
+    background:
+        var(--surface);
+
+    color:
+        var(--text);
+
+    font-size:
+        20px;
 
 }
 
 
-/* ================= HERO ================= */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero {
 
-    min-height: 100vh;
+    min-height:
+        100vh;
 
-    width: min(1150px,90vw);
+    width:
+        min(1150px, 90vw);
 
-    margin: auto;
+    margin:
+        auto;
 
-    padding-top: 130px;
+    padding-top:
+        130px;
 
-    display: grid;
+    display:
+        grid;
 
     grid-template-columns:
-        1.05fr
-        .95fr;
+        1.05fr 0.95fr;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 60px;
+    gap:
+        60px;
 
-    position: relative;
+    position:
+        relative;
 
 }
 
 
-/* HERO TEXT */
+/* =========================================================
+   HERO TEXT
+========================================================= */
 
 .small-title {
 
-    color: var(--cyan);
+    color:
+        var(--cyan);
 
-    font-size: 13px;
+    font-size:
+        13px;
 
-    letter-spacing: 4px;
+    letter-spacing:
+        4px;
 
-    font-weight: 800;
+    font-weight:
+        800;
 
-    margin-bottom: 20px;
+    margin-bottom:
+        20px;
 
 }
+
 
 .hero h1 {
 
     font-size:
-        clamp(
-            70px,
-            11vw,
-            140px
-        );
+        clamp(70px, 11vw, 140px);
 
-    line-height: .85;
+    line-height:
+        0.85;
 
-    letter-spacing: -9px;
+    letter-spacing:
+        -9px;
 
-    margin-bottom: 28px;
+    margin-bottom:
+        28px;
 
 }
+
 
 .hero h1 span {
 
-    color: var(--cyan);
+    color:
+        var(--cyan);
 
 }
+
 
 .hero h2 {
 
     font-size:
-        clamp(
-            24px,
-            4vw,
-            42px
-        );
+        clamp(24px, 4vw, 42px);
 
-    margin-bottom: 20px;
+    margin-bottom:
+        20px;
 
-    letter-spacing: -2px;
+    letter-spacing:
+        -2px;
 
 }
+
 
 .hero h2 span {
 
-    color: var(--purple);
+    color:
+        var(--purple);
 
 }
+
 
 .cursor {
 
-    color: var(--cyan);
+    color:
+        var(--cyan);
 
     animation:
-        blink .8s infinite;
+        blink 0.8s infinite;
 
 }
+
 
 @keyframes blink {
 
     50% {
 
-        opacity: 0;
+        opacity:
+            0;
 
     }
 
 }
 
+
 .hero-description {
 
-    max-width: 600px;
+    max-width:
+        600px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    font-size: 17px;
+    font-size:
+        17px;
 
 }
 
 
-/* BUTTONS */
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
 
 .hero-buttons {
 
-    display: flex;
+    display:
+        flex;
 
-    gap: 14px;
+    gap:
+        14px;
 
-    margin-top: 32px;
+    margin-top:
+        32px;
 
-    flex-wrap: wrap;
+    flex-wrap:
+        wrap;
 
 }
 
+
 .btn {
 
-    min-height: 50px;
+    min-height:
+        50px;
 
     padding:
         0 22px;
 
-    border-radius: 999px;
+    border-radius:
+        999px;
 
     display:
         inline-flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    font-weight: 800;
+    gap:
+        8px;
 
-    transition: .2s;
+    font-weight:
+        800;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 
 }
+
 
 .btn:hover {
 
@@ -417,9 +650,13 @@ nav a.active::after {
 
 }
 
+
+/* Primary button */
+
 .primary-btn {
 
-    color: white;
+    color:
+        #ffffff;
 
     background:
         linear-gradient(
@@ -430,9 +667,21 @@ nav a.active::after {
 
     box-shadow:
         0 15px 35px
-        rgba(139,92,246,.25);
+        rgba(139, 92, 246, 0.25);
 
 }
+
+
+.primary-btn:hover {
+
+    box-shadow:
+        0 20px 40px
+        rgba(139, 92, 246, 0.35);
+
+}
+
+
+/* Secondary button */
 
 .secondary-btn {
 
@@ -445,29 +694,40 @@ nav a.active::after {
 }
 
 
-/* SOCIAL */
+/* =========================================================
+   SOCIAL LINKS
+========================================================= */
 
 .social-links {
 
-    display: flex;
+    display:
+        flex;
 
-    gap: 10px;
+    gap:
+        10px;
 
-    margin-top: 28px;
+    margin-top:
+        28px;
 
 }
 
+
 .social-links a {
 
-    width: 40px;
+    width:
+        40px;
 
-    height: 40px;
+    height:
+        40px;
 
-    display: grid;
+    display:
+        grid;
 
-    place-items: center;
+    place-items:
+        center;
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
     background:
         var(--surface);
@@ -475,27 +735,40 @@ nav a.active::after {
     border:
         1px solid var(--border);
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    font-size: 12px;
+    font-size:
+        12px;
 
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    transition: .2s;
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
 
 }
 
+
 .social-links a:hover {
 
-    color: var(--text);
+    color:
+        var(--text);
 
     transform:
         translateY(-3px);
 
+    border-color:
+        rgba(34, 211, 238, 0.4);
+
 }
 
 
-/* HERO VISUAL */
+/* =========================================================
+   HERO VISUAL
+========================================================= */
 
 .hero-image {
 
@@ -507,15 +780,14 @@ nav a.active::after {
 
 }
 
+
 .orb {
 
     width:
-        min(
-            430px,
-            80vw
-        );
+        min(430px, 80vw);
 
-    aspect-ratio: 1;
+    aspect-ratio:
+        1;
 
     position:
         relative;
@@ -528,13 +800,21 @@ nav a.active::after {
 
 }
 
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
 .avatar {
 
-    width: 210px;
+    width:
+        210px;
 
-    height: 210px;
+    height:
+        210px;
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
     display:
         grid;
@@ -542,42 +822,44 @@ nav a.active::after {
     place-items:
         center;
 
-    font-size: 100px;
+    font-size:
+        100px;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
     background:
         var(--surface-solid);
 
-    border:
-        12px solid transparent;
+    position:
+        relative;
 
-    background-clip:
-        padding-box;
-
-    position: relative;
-
-    z-index: 2;
+    z-index:
+        2;
 
     box-shadow:
         0 0 100px
-        rgba(139,92,246,.25);
+        rgba(139, 92, 246, 0.25);
 
     animation:
         float 5s ease-in-out infinite;
 
 }
 
+
 .avatar::before {
 
-    content: "";
+    content:
+        "";
 
     position:
         absolute;
 
-    inset: -12px;
+    inset:
+        -12px;
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 
     background:
         linear-gradient(
@@ -587,9 +869,11 @@ nav a.active::after {
             var(--pink)
         );
 
-    z-index: -1;
+    z-index:
+        -1;
 
 }
+
 
 @keyframes float {
 
@@ -603,7 +887,9 @@ nav a.active::after {
 }
 
 
-/* ORBITS */
+/* =========================================================
+   ORBITS
+========================================================= */
 
 .orbit {
 
@@ -621,26 +907,34 @@ nav a.active::after {
 
 }
 
+
 .orbit1 {
 
-    width: 72%;
+    width:
+        72%;
 
-    aspect-ratio: 1;
+    aspect-ratio:
+        1;
 
 }
 
+
 .orbit2 {
 
-    width: 96%;
+    width:
+        96%;
 
-    aspect-ratio: 1;
+    aspect-ratio:
+        1;
 
-    animation-duration: 28s;
+    animation-duration:
+        28s;
 
     animation-direction:
         reverse;
 
 }
+
 
 @keyframes rotate {
 
@@ -654,16 +948,20 @@ nav a.active::after {
 }
 
 
-/* FLOATING ICONS */
+/* =========================================================
+   FLOATING ICONS
+========================================================= */
 
 .floating-icon {
 
     position:
         absolute;
 
-    width: 58px;
+    width:
+        58px;
 
-    height: 58px;
+    height:
+        58px;
 
     border-radius:
         18px;
@@ -689,34 +987,44 @@ nav a.active::after {
     font-weight:
         900;
 
-    z-index: 3;
+    z-index:
+        3;
 
 }
+
 
 .icon1 {
 
-    top: 4%;
+    top:
+        4%;
 
-    right: 8%;
+    right:
+        8%;
 
 }
 
+
 .icon2 {
 
-    bottom: 7%;
+    bottom:
+        7%;
 
-    left: 7%;
+    left:
+        7%;
 
     color:
         var(--cyan);
 
 }
 
+
 .icon3 {
 
-    bottom: 3%;
+    bottom:
+        3%;
 
-    right: 17%;
+    right:
+        17%;
 
     color:
         var(--purple);
@@ -724,16 +1032,20 @@ nav a.active::after {
 }
 
 
-/* SCROLL */
+/* =========================================================
+   SCROLL DOWN
+========================================================= */
 
 .scroll-down {
 
     position:
         absolute;
 
-    bottom: 30px;
+    bottom:
+        30px;
 
-    left: 50%;
+    left:
+        50%;
 
     transform:
         translateX(-50%);
@@ -741,32 +1053,35 @@ nav a.active::after {
     color:
         var(--muted);
 
+    font-size:
+        22px;
+
     animation:
         bounce 1.6s infinite;
 
 }
+
 
 @keyframes bounce {
 
     50% {
 
         transform:
-            translate(-50%,8px);
+            translate(-50%, 8px);
 
     }
 
 }
 
 
-/* ================= SECTIONS ================= */
+/* =========================================================
+   SECTION
+========================================================= */
 
 .section {
 
     width:
-        min(
-            1150px,
-            90vw
-        );
+        min(1150px, 90vw);
 
     margin:
         0 auto;
@@ -776,12 +1091,18 @@ nav a.active::after {
 
 }
 
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
 .section-title {
 
     margin-bottom:
         50px;
 
 }
+
 
 .section-title p {
 
@@ -802,22 +1123,20 @@ nav a.active::after {
 
 }
 
+
 .section-title h2 {
 
     font-size:
-        clamp(
-            40px,
-            6vw,
-            70px
-        );
+        clamp(40px, 6vw, 70px);
 
     line-height:
-        .95;
+        0.95;
 
     letter-spacing:
         -5px;
 
 }
+
 
 .section-title span {
 
@@ -827,7 +1146,9 @@ nav a.active::after {
 }
 
 
-/* ================= ABOUT ================= */
+/* =========================================================
+   ABOUT
+========================================================= */
 
 .about-container {
 
@@ -835,13 +1156,13 @@ nav a.active::after {
         grid;
 
     grid-template-columns:
-        1.1fr
-        .9fr;
+        1.1fr 0.9fr;
 
     gap:
         25px;
 
 }
+
 
 .about-card {
 
@@ -865,6 +1186,7 @@ nav a.active::after {
 
 }
 
+
 .about-card p {
 
     color:
@@ -875,12 +1197,14 @@ nav a.active::after {
 
 }
 
+
 .about-card p + p {
 
     margin-top:
         18px;
 
 }
+
 
 .text-link {
 
@@ -893,8 +1217,23 @@ nav a.active::after {
     font-weight:
         900;
 
+    transition:
+        color 0.2s ease;
+
 }
 
+
+.text-link:hover {
+
+    color:
+        var(--cyan);
+
+}
+
+
+/* =========================================================
+   STATISTICS
+========================================================= */
 
 .stats {
 
@@ -908,6 +1247,7 @@ nav a.active::after {
         15px;
 
 }
+
 
 .stat {
 
@@ -923,7 +1263,23 @@ nav a.active::after {
     border-radius:
         20px;
 
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+
 }
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(139, 92, 246, 0.35);
+
+}
+
 
 .stat h3 {
 
@@ -935,6 +1291,7 @@ nav a.active::after {
 
 }
 
+
 .stat p {
 
     color:
@@ -943,7 +1300,9 @@ nav a.active::after {
 }
 
 
-/* ================= SKILLS ================= */
+/* =========================================================
+   SKILLS
+========================================================= */
 
 .skills-container {
 
@@ -951,13 +1310,15 @@ nav a.active::after {
         grid;
 
     grid-template-columns:
-        .9fr
-        1.1fr;
+        0.9fr 1.1fr;
 
     gap:
         50px;
 
 }
+
+
+/* Skill bars box */
 
 .skill-bars {
 
@@ -975,12 +1336,14 @@ nav a.active::after {
 
 }
 
+
 .skill + .skill {
 
     margin-top:
         25px;
 
 }
+
 
 .skill-info {
 
@@ -998,13 +1361,14 @@ nav a.active::after {
 
 }
 
+
 .progress {
 
     height:
         8px;
 
     background:
-        rgba(127,127,127,.15);
+        rgba(127, 127, 127, 0.15);
 
     border-radius:
         20px;
@@ -1013,6 +1377,7 @@ nav a.active::after {
         hidden;
 
 }
+
 
 .progress div {
 
@@ -1031,6 +1396,11 @@ nav a.active::after {
 
 }
 
+
+/* =========================================================
+   TECHNOLOGY TAGS
+========================================================= */
+
 .technology-list {
 
     display:
@@ -1046,6 +1416,7 @@ nav a.active::after {
         12px;
 
 }
+
 
 .technology-list span {
 
@@ -1065,9 +1436,12 @@ nav a.active::after {
         var(--surface);
 
     transition:
-        .2s;
+        transform 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
 
 }
+
 
 .technology-list span:hover {
 
@@ -1077,10 +1451,15 @@ nav a.active::after {
     color:
         var(--text);
 
+    border-color:
+        rgba(34, 211, 238, 0.35);
+
 }
 
 
-/* ================= FILTERS ================= */
+/* =========================================================
+   PROJECT FILTERS
+========================================================= */
 
 .filter-buttons {
 
@@ -1093,7 +1472,11 @@ nav a.active::after {
     margin-bottom:
         28px;
 
+    flex-wrap:
+        wrap;
+
 }
+
 
 .filter {
 
@@ -1112,7 +1495,19 @@ nav a.active::after {
     background:
         var(--surface);
 
+    transition:
+        0.2s;
+
 }
+
+
+.filter:hover {
+
+    color:
+        var(--text);
+
+}
+
 
 .filter.active {
 
@@ -1128,7 +1523,9 @@ nav a.active::after {
 }
 
 
-/* ================= PROJECTS ================= */
+/* =========================================================
+   PROJECTS
+========================================================= */
 
 .projects {
 
@@ -1136,12 +1533,13 @@ nav a.active::after {
         grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
     gap:
         18px;
 
 }
+
 
 .project {
 
@@ -1170,9 +1568,12 @@ nav a.active::after {
         blur(15px);
 
     transition:
-        .25s;
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 
 }
+
 
 .project:hover {
 
@@ -1180,9 +1581,13 @@ nav a.active::after {
         translateY(-7px);
 
     border-color:
-        rgba(139,92,246,.4);
+        rgba(139, 92, 246, 0.4);
+
+    box-shadow:
+        var(--shadow);
 
 }
+
 
 .project-number {
 
@@ -1202,7 +1607,7 @@ nav a.active::after {
         16px;
 
     background:
-        rgba(139,92,246,.12);
+        rgba(139, 92, 246, 0.12);
 
     color:
         var(--cyan);
@@ -1214,6 +1619,7 @@ nav a.active::after {
         30px;
 
 }
+
 
 .project-content {
 
@@ -1227,6 +1633,7 @@ nav a.active::after {
         100%;
 
 }
+
 
 .project-content small {
 
@@ -1244,6 +1651,7 @@ nav a.active::after {
 
 }
 
+
 .project-content h3 {
 
     font-size:
@@ -1254,6 +1662,7 @@ nav a.active::after {
 
 }
 
+
 .project-content p {
 
     color:
@@ -1263,6 +1672,7 @@ nav a.active::after {
         14px;
 
 }
+
 
 .tags {
 
@@ -1280,6 +1690,7 @@ nav a.active::after {
 
 }
 
+
 .tags span {
 
     padding:
@@ -1289,7 +1700,7 @@ nav a.active::after {
         50px;
 
     background:
-        rgba(127,127,127,.12);
+        rgba(127, 127, 127, 0.12);
 
     font-size:
         11px;
@@ -1300,7 +1711,9 @@ nav a.active::after {
 }
 
 
-/* ================= TIMELINE ================= */
+/* =========================================================
+   TIMELINE
+========================================================= */
 
 .timeline {
 
@@ -1315,9 +1728,11 @@ nav a.active::after {
 
 }
 
+
 .timeline::before {
 
-    content: "";
+    content:
+        "";
 
     position:
         absolute;
@@ -1339,15 +1754,14 @@ nav a.active::after {
 
 }
 
+
 .timeline-item {
 
     display:
         grid;
 
     grid-template-columns:
-        40px
-        100px
-        1fr;
+        40px 100px 1fr;
 
     gap:
         20px;
@@ -1356,6 +1770,7 @@ nav a.active::after {
         30px;
 
 }
+
 
 .timeline-dot {
 
@@ -1383,6 +1798,7 @@ nav a.active::after {
 
 }
 
+
 .timeline-date {
 
     color:
@@ -1398,6 +1814,7 @@ nav a.active::after {
         3px;
 
 }
+
 
 .timeline-card {
 
@@ -1415,6 +1832,15 @@ nav a.active::after {
 
 }
 
+
+.timeline-card h3 {
+
+    margin-bottom:
+        5px;
+
+}
+
+
 .timeline-card p {
 
     color:
@@ -1423,7 +1849,9 @@ nav a.active::after {
 }
 
 
-/* ================= CONTACT ================= */
+/* =========================================================
+   CONTACT
+========================================================= */
 
 .contact-container {
 
@@ -1431,8 +1859,7 @@ nav a.active::after {
         grid;
 
     grid-template-columns:
-        .9fr
-        1.1fr;
+        0.9fr 1.1fr;
 
     gap:
         50px;
@@ -1452,24 +1879,27 @@ nav a.active::after {
     backdrop-filter:
         blur(15px);
 
+    box-shadow:
+        var(--shadow);
+
 }
+
+
+/* Contact title */
 
 .contact-info h2 {
 
     font-size:
-        clamp(
-            45px,
-            6vw,
-            75px
-        );
+        clamp(45px, 6vw, 75px);
 
     line-height:
-        .95;
+        0.95;
 
     letter-spacing:
         -5px;
 
 }
+
 
 .contact-info h2 span {
 
@@ -1481,6 +1911,7 @@ nav a.active::after {
 
 }
 
+
 .contact-info > p:last-child {
 
     margin-top:
@@ -1490,6 +1921,11 @@ nav a.active::after {
         var(--muted);
 
 }
+
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
 
 form {
 
@@ -1501,6 +1937,7 @@ form {
 
 }
 
+
 form label {
 
     font-size:
@@ -1510,6 +1947,7 @@ form label {
         800;
 
 }
+
 
 form input,
 form textarea {
@@ -1527,7 +1965,7 @@ form textarea {
         15px;
 
     background:
-        rgba(127,127,127,.08);
+        rgba(127, 127, 127, 0.08);
 
     color:
         var(--text);
@@ -1538,7 +1976,24 @@ form textarea {
     margin-bottom:
         8px;
 
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
 }
+
+
+form input::placeholder,
+form textarea::placeholder {
+
+    color:
+        var(--muted);
+
+    opacity:
+        0.75;
+
+}
+
 
 form input:focus,
 form textarea:focus {
@@ -1548,9 +2003,21 @@ form textarea:focus {
 
     box-shadow:
         0 0 0 4px
-        rgba(139,92,246,.08);
+        rgba(139, 92, 246, 0.08);
 
 }
+
+
+form textarea {
+
+    resize:
+        vertical;
+
+    min-height:
+        140px;
+
+}
+
 
 #formMessage {
 
@@ -1560,18 +2027,20 @@ form textarea:focus {
     font-size:
         13px;
 
+    min-height:
+        20px;
+
 }
 
 
-/* ================= FOOTER ================= */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer {
 
     width:
-        min(
-            1150px,
-            90vw
-        );
+        min(1150px, 90vw);
 
     margin:
         auto;
@@ -1588,6 +2057,9 @@ footer {
     justify-content:
         space-between;
 
+    align-items:
+        center;
+
     color:
         var(--muted);
 
@@ -1595,6 +2067,7 @@ footer {
         13px;
 
 }
+
 
 footer a {
 
@@ -1607,9 +2080,19 @@ footer a {
 }
 
 
-/* ================= MOBILE ================= */
+footer a:hover {
 
-@media(max-width:900px) {
+    color:
+        var(--cyan);
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
 
     .hero {
 
@@ -1621,6 +2104,7 @@ footer a {
 
     }
 
+
     .hero-text {
 
         max-width:
@@ -1631,6 +2115,15 @@ footer a {
 
     }
 
+
+    .hero-description {
+
+        margin:
+            auto;
+
+    }
+
+
     .hero-buttons,
     .social-links {
 
@@ -1639,12 +2132,14 @@ footer a {
 
     }
 
+
     .hero-image {
 
         order:
             -1;
 
     }
+
 
     .about-container,
     .skills-container,
@@ -1655,17 +2150,30 @@ footer a {
 
     }
 
+
     .projects {
 
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(2, 1fr);
 
     }
 
 }
 
 
-@media(max-width:700px) {
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+
+        padding:
+            0 5vw;
+
+    }
+
 
     nav {
 
@@ -1687,8 +2195,11 @@ footer a {
         flex-direction:
             column;
 
+        gap:
+            0;
+
         padding:
-            12px;
+            10px;
 
         background:
             var(--surface-solid);
@@ -1699,7 +2210,14 @@ footer a {
         border-radius:
             20px;
 
+        box-shadow:
+            var(--shadow);
+
+        backdrop-filter:
+            blur(18px);
+
     }
+
 
     nav.open {
 
@@ -1708,19 +2226,52 @@ footer a {
 
     }
 
+
     nav a {
 
         padding:
-            12px;
+            14px;
 
     }
+
+
+    /*
+        Mobile underline is inside
+        the menu item.
+    */
+
+    nav a::after {
+
+        bottom:
+            7px;
+
+        left:
+            14px;
+
+        width:
+            0;
+
+    }
+
+
+    nav a.active::after {
+
+        width:
+            calc(100% - 28px);
+
+    }
+
 
     .menu-btn {
 
         display:
-            block;
+            grid;
+
+        place-items:
+            center;
 
     }
+
 
     .projects {
 
@@ -1729,13 +2280,14 @@ footer a {
 
     }
 
+
     .timeline-item {
 
         grid-template-columns:
-            30px
-            1fr;
+            30px 1fr;
 
     }
+
 
     .timeline-date {
 
@@ -1744,12 +2296,14 @@ footer a {
 
     }
 
+
     .timeline-card {
 
         grid-column:
             2;
 
     }
+
 
     footer {
 
@@ -1770,7 +2324,11 @@ footer a {
 }
 
 
-@media(max-width:480px) {
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
 
     .section {
 
@@ -1779,12 +2337,14 @@ footer a {
 
     }
 
+
     .stats {
 
         grid-template-columns:
             1fr;
 
     }
+
 
     .hero h1 {
 
@@ -1795,6 +2355,47 @@ footer a {
             -6px;
 
     }
+
+
+    .hero h2 {
+
+        font-size:
+            25px;
+
+    }
+
+
+    .hero-description {
+
+        font-size:
+            15px;
+
+    }
+
+
+    .hero-buttons {
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .hero-buttons .btn {
+
+        width:
+            100%;
+
+    }
+
+
+    .orb {
+
+        width:
+            290px;
+
+    }
+
 
     .avatar {
 
@@ -1809,10 +2410,44 @@ footer a {
 
     }
 
-    .orb {
+
+    .floating-icon {
 
         width:
-            290px;
+            48px;
+
+        height:
+            48px;
+
+        border-radius:
+            14px;
+
+        font-size:
+            13px;
+
+    }
+
+
+    .section-title h2 {
+
+        letter-spacing:
+            -3px;
+
+    }
+
+
+    .contact-container {
+
+        padding:
+            28px;
+
+    }
+
+
+    .contact-info h2 {
+
+        letter-spacing:
+            -3px;
 
     }
 
