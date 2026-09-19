@@ -5,16 +5,21 @@
 :root {
 
     --background: #08090d;
+
     --surface: rgba(20, 22, 31, 0.72);
+
     --surface-solid: #11131b;
 
     --text: #ffffff;
+
     --muted: #9ca3b5;
 
     --border: rgba(255, 255, 255, 0.10);
 
     --purple: #8b5cf6;
+
     --pink: #d946ef;
+
     --cyan: #22d3ee;
 
     --shadow:
@@ -64,9 +69,20 @@ body.light {
 }
 
 
+/* =========================================================
+   SMOOTH SCROLL
+========================================================= */
+
 html {
 
     scroll-behavior: smooth;
+
+    /*
+        Keeps sections from hiding behind
+        the fixed navbar.
+    */
+
+    scroll-padding-top: 90px;
 
 }
 
@@ -94,6 +110,18 @@ body {
     transition:
         background 0.3s ease,
         color 0.3s ease;
+
+}
+
+
+/*
+    Extra smooth section positioning.
+*/
+
+section {
+
+    scroll-margin-top:
+        90px;
 
 }
 
@@ -171,8 +199,6 @@ button {
 }
 
 
-/* Navbar after scrolling */
-
 .navbar.scrolled {
 
     background:
@@ -186,8 +212,6 @@ button {
 
 }
 
-
-/* Light theme navbar */
 
 body.light .navbar.scrolled {
 
@@ -272,8 +296,6 @@ nav a:hover {
 }
 
 
-/* Active text */
-
 nav a.active {
 
     color:
@@ -283,7 +305,7 @@ nav a.active {
 
 
 /* =========================================================
-   NAVIGATION UNDERLINE
+   NAV UNDERLINE
 ========================================================= */
 
 nav a::after {
@@ -317,18 +339,11 @@ nav a::after {
         );
 
     transition:
-        width 0.28s ease;
+        width 0.35s
+        cubic-bezier(0.22, 1, 0.36, 1);
 
 }
 
-
-/*
-    IMPORTANT:
-
-    JavaScript changes the active class.
-    Therefore the underline follows the
-    currently active section.
-*/
 
 nav a.active::after {
 
@@ -393,9 +408,9 @@ nav a.active::after {
         blur(12px);
 
     transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
 
 }
 
@@ -404,7 +419,7 @@ nav a.active::after {
 
     transform:
         rotate(15deg)
-        scale(1.04);
+        scale(1.05);
 
     border-color:
         rgba(139, 92, 246, 0.45);
@@ -413,7 +428,7 @@ nav a.active::after {
 
 
 /* =========================================================
-   MOBILE MENU BUTTON
+   MOBILE MENU
 ========================================================= */
 
 .menu-btn {
@@ -637,8 +652,8 @@ nav a.active::after {
         800;
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 
 }
 
@@ -650,8 +665,6 @@ nav a.active::after {
 
 }
 
-
-/* Primary button */
 
 .primary-btn {
 
@@ -680,8 +693,6 @@ nav a.active::after {
 
 }
 
-
-/* Secondary button */
 
 .secondary-btn {
 
@@ -745,9 +756,9 @@ nav a.active::after {
         bold;
 
     transition:
-        transform 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease;
+        transform 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
 
 }
 
@@ -1264,8 +1275,8 @@ nav a.active::after {
         20px;
 
     transition:
-        transform 0.2s ease,
-        border-color 0.2s ease;
+        transform 0.25s ease,
+        border-color 0.25s ease;
 
 }
 
@@ -1317,8 +1328,6 @@ nav a.active::after {
 
 }
 
-
-/* Skill bars box */
 
 .skill-bars {
 
@@ -1398,7 +1407,7 @@ nav a.active::after {
 
 
 /* =========================================================
-   TECHNOLOGY TAGS
+   TECHNOLOGIES
 ========================================================= */
 
 .technology-list {
@@ -1436,9 +1445,9 @@ nav a.active::after {
         var(--surface);
 
     transition:
-        transform 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease;
+        transform 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
 
 }
 
@@ -1568,9 +1577,9 @@ nav a.active::after {
         blur(15px);
 
     transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 
 }
 
@@ -1885,8 +1894,6 @@ nav a.active::after {
 }
 
 
-/* Contact title */
-
 .contact-info h2 {
 
     font-size:
@@ -1977,8 +1984,8 @@ form textarea {
         8px;
 
     transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 
 }
 
@@ -2077,6 +2084,9 @@ footer a {
     font-weight:
         800;
 
+    transition:
+        color 0.2s ease;
+
 }
 
 
@@ -2162,7 +2172,7 @@ footer a:hover {
 
 
 /* =========================================================
-   MOBILE NAVIGATION
+   MOBILE
 ========================================================= */
 
 @media (max-width: 700px) {
@@ -2234,11 +2244,6 @@ footer a:hover {
 
     }
 
-
-    /*
-        Mobile underline is inside
-        the menu item.
-    */
 
     nav a::after {
 
