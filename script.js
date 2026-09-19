@@ -3,22 +3,38 @@
 ========================================================= */
 
 const body = document.body;
-const themeToggle = document.getElementById("themeToggle");
 
-const savedTheme = localStorage.getItem("theme");
+const themeToggle =
+    document.getElementById("themeToggle");
+
+
+const savedTheme =
+    localStorage.getItem("theme");
+
 
 if (savedTheme === "light") {
+
     body.classList.add("light");
+
     themeToggle.textContent = "☀";
+
 }
+
+
+/* Theme button */
 
 themeToggle.addEventListener("click", () => {
 
     body.classList.toggle("light");
 
-    const isLight = body.classList.contains("light");
 
-    themeToggle.textContent = isLight ? "☀" : "☾";
+    const isLight =
+        body.classList.contains("light");
+
+
+    themeToggle.textContent =
+        isLight ? "☀" : "☾";
+
 
     localStorage.setItem(
         "theme",
@@ -32,8 +48,12 @@ themeToggle.addEventListener("click", () => {
    MOBILE MENU
 ========================================================= */
 
-const menuToggle = document.getElementById("menuToggle");
-const navLinks = document.getElementById("navLinks");
+const menuToggle =
+    document.getElementById("menuToggle");
+
+
+const navLinks =
+    document.getElementById("navLinks");
 
 
 menuToggle.addEventListener("click", () => {
@@ -43,15 +63,19 @@ menuToggle.addEventListener("click", () => {
 });
 
 
-navLinks.querySelectorAll("a").forEach((link) => {
+/* Close mobile menu after clicking a link */
 
-    link.addEventListener("click", () => {
+navLinks
+    .querySelectorAll("a")
+    .forEach((link) => {
 
-        navLinks.classList.remove("open");
+        link.addEventListener("click", () => {
+
+            navLinks.classList.remove("open");
+
+        });
 
     });
-
-});
 
 
 /* =========================================================
@@ -59,14 +83,19 @@ navLinks.querySelectorAll("a").forEach((link) => {
 ========================================================= */
 
 const navItems =
-    document.querySelectorAll("#navLinks a");
+    document.querySelectorAll(
+        "#navLinks a"
+    );
+
 
 const sections =
-    document.querySelectorAll("section[id]");
+    document.querySelectorAll(
+        "section[id]"
+    );
 
 
 /*
-    Function to change the active navigation item
+    Change active navigation item.
 */
 
 function setActiveLink(sectionId) {
@@ -75,11 +104,16 @@ function setActiveLink(sectionId) {
 
         link.classList.remove("active");
 
+
         const linkTarget =
-            link.getAttribute("href")
+            link
+                .getAttribute("href")
                 .replace("#", "");
 
-        if (linkTarget === sectionId) {
+
+        if (
+            linkTarget === sectionId
+        ) {
 
             link.classList.add("active");
 
@@ -91,26 +125,193 @@ function setActiveLink(sectionId) {
 
 
 /* =========================================================
-   NAVIGATION CLICK
+   SUPER SMOOTH NAVIGATION
 ========================================================= */
 
 navItems.forEach((link) => {
 
-    link.addEventListener("click", function () {
+    link.addEventListener(
+        "click",
+        function (event) {
 
-        const targetId =
-            this.getAttribute("href")
-                .substring(1);
+            event.preventDefault();
 
-        /*
-            Move the underline immediately
-        */
 
-        setActiveLink(targetId);
+            const targetId =
+                this
+                    .getAttribute("href")
+                    .substring(1);
+
+
+            const target =
+                document.getElementById(targetId);
+
+
+            if (!target) {
+                return;
+            }
+
+
+            /*
+                Immediately move active underline.
+            */
+
+            setActiveLink(targetId);
+
+
+            /*
+                Calculate position while accounting
+                for the fixed navbar.
+            */
+
+            const navbarHeight = 78;
+
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                navbarHeight;
+
+
+            /*
+                Native browser smooth scrolling.
+            */
+
+            window.scrollTo({
+
+                top:
+                    targetPosition,
+
+                behavior:
+                    "smooth"
+
+            });
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   ALL INTERNAL LINKS
+   SMOOTH SCROLL
+========================================================= */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            function (event) {
+
+                const href =
+                    this.getAttribute("href");
+
+
+                /*
+                    Ignore empty "#"
+                */
+
+                if (
+                    !href ||
+                    href === "#"
+                ) {
+
+                    return;
+
+                }
+
+
+                /*
+                    Navigation links are already
+                    handled above.
+                */
+
+                if (
+                    this.closest("#navLinks")
+                ) {
+
+                    return;
+
+                }
+
+
+                const target =
+                    document.getElementById(
+                        href.substring(1)
+                    );
+
+
+                if (!target) {
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
+
+                const navbarHeight = 78;
+
+
+                const targetPosition =
+                    target.getBoundingClientRect().top +
+                    window.scrollY -
+                    navbarHeight;
+
+
+                window.scrollTo({
+
+                    top:
+                        targetPosition,
+
+                    behavior:
+                        "smooth"
+
+                });
+
+            }
+        );
 
     });
 
-});
+
+/* =========================================================
+   NAVBAR SCROLL EFFECT
+========================================================= */
+
+const navbar =
+    document.getElementById("navbar");
+
+
+function updateNavbar() {
+
+    if (
+        window.scrollY > 30
+    ) {
+
+        navbar.classList.add("scrolled");
+
+    } else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateNavbar,
+    { passive: true }
+);
+
+
+updateNavbar();
 
 
 /* =========================================================
@@ -124,7 +325,9 @@ const sectionObserver =
 
             entries.forEach((entry) => {
 
-                if (entry.isIntersecting) {
+                if (
+                    entry.isIntersecting
+                ) {
 
                     setActiveLink(
                         entry.target.id
@@ -137,11 +340,13 @@ const sectionObserver =
         },
 
         {
+
             root: null,
 
             /*
-                Controls when a section becomes
-                the active navigation item.
+                This makes the active line
+                follow the section currently
+                near the center of the screen.
             */
 
             rootMargin:
@@ -157,29 +362,6 @@ const sectionObserver =
 sections.forEach((section) => {
 
     sectionObserver.observe(section);
-
-});
-
-
-/* =========================================================
-   NAVBAR SCROLL EFFECT
-========================================================= */
-
-const navbar =
-    document.getElementById("navbar");
-
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 30) {
-
-        navbar.classList.add("scrolled");
-
-    } else {
-
-        navbar.classList.remove("scrolled");
-
-    }
 
 });
 
@@ -218,9 +400,7 @@ function typeEffect() {
         roles[roleIndex];
 
 
-    /*
-        Typing
-    */
+    /* Typing */
 
     if (!deleting) {
 
@@ -230,11 +410,12 @@ function typeEffect() {
                 charIndex + 1
             );
 
+
         charIndex++;
 
 
         /*
-            Pause when the word is complete
+            Pause when complete.
         */
 
         if (
@@ -244,10 +425,12 @@ function typeEffect() {
 
             deleting = true;
 
+
             setTimeout(
                 typeEffect,
                 1500
             );
+
 
             return;
 
@@ -256,9 +439,7 @@ function typeEffect() {
     }
 
 
-    /*
-        Deleting
-    */
+    /* Deleting */
 
     else {
 
@@ -268,18 +449,22 @@ function typeEffect() {
                 charIndex - 1
             );
 
+
         charIndex--;
 
 
         /*
-            Move to next word
+            Go to next sentence.
         */
 
-        if (charIndex === 0) {
+        if (
+            charIndex === 0
+        ) {
 
             deleting = false;
 
             roleIndex++;
+
 
             if (
                 roleIndex >=
@@ -316,74 +501,78 @@ typeEffect();
 ========================================================= */
 
 const filterButtons =
-    document.querySelectorAll(".filter");
+    document.querySelectorAll(
+        ".filter"
+    );
 
 
 const projects =
-    document.querySelectorAll(".project");
+    document.querySelectorAll(
+        ".project"
+    );
 
 
 filterButtons.forEach((button) => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+        "click",
+        () => {
 
-        /*
-            Remove active from all filters
-        */
+            /*
+                Remove active from all.
+            */
 
-        filterButtons.forEach((btn) => {
+            filterButtons.forEach(
+                (btn) => {
 
-            btn.classList.remove("active");
+                    btn.classList.remove(
+                        "active"
+                    );
 
-        });
-
-
-        /*
-            Activate clicked filter
-        */
-
-        button.classList.add("active");
-
-
-        const filter =
-            button.dataset.filter;
-
-
-        projects.forEach((project) => {
-
-            const category =
-                project.dataset.category;
+                }
+            );
 
 
             /*
-                Show matching projects
+                Activate selected filter.
             */
 
-            if (
-                filter === "all" ||
-                category === filter
-            ) {
-
-                project.style.display =
-                    "flex";
-
-            }
+            button.classList.add(
+                "active"
+            );
 
 
-            /*
-                Hide other projects
-            */
+            const filter =
+                button.dataset.filter;
 
-            else {
 
-                project.style.display =
-                    "none";
+            projects.forEach(
+                (project) => {
 
-            }
+                    const category =
+                        project.dataset.category;
 
-        });
 
-    });
+                    if (
+                        filter === "all" ||
+                        category === filter
+                    ) {
+
+                        project.style.display =
+                            "flex";
+
+                    } else {
+
+                        project.style.display =
+                            "none";
+
+                    }
+
+                }
+            );
+
+        }
+    );
 
 });
 
@@ -393,108 +582,117 @@ filterButtons.forEach((button) => {
 ========================================================= */
 
 const form =
-    document.getElementById("contactForm");
+    document.getElementById(
+        "contactForm"
+    );
 
 
 const formMessage =
-    document.getElementById("formMessage");
+    document.getElementById(
+        "formMessage"
+    );
 
 
-form.addEventListener("submit", (event) => {
+form.addEventListener(
+    "submit",
+    (event) => {
 
-    event.preventDefault();
-
-
-    const name =
-        document
-            .getElementById("name")
-            .value
-            .trim();
+        event.preventDefault();
 
 
-    const email =
-        document
-            .getElementById("email")
-            .value
-            .trim();
+        const name =
+            document
+                .getElementById("name")
+                .value
+                .trim();
 
 
-    const message =
-        document
-            .getElementById("message")
-            .value
-            .trim();
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
 
 
-    /*
-        Check fields
-    */
+        const message =
+            document
+                .getElementById("message")
+                .value
+                .trim();
 
-    if (
-        !name ||
-        !email ||
-        !message
-    ) {
+
+        /*
+            Validate form.
+        */
+
+        if (
+            !name ||
+            !email ||
+            !message
+        ) {
+
+            formMessage.textContent =
+                "Please fill all fields.";
+
+            return;
+
+        }
+
+
+        /*
+            IMPORTANT:
+
+            Replace this with YOUR
+            actual email address.
+        */
+
+        const myEmail =
+            "your-email@example.com";
+
+
+        /*
+            Email subject.
+        */
+
+        const subject =
+            encodeURIComponent(
+                "Portfolio message from " +
+                name
+            );
+
+
+        /*
+            Email body.
+        */
+
+        const emailBody =
+            encodeURIComponent(
+
+                "Name: " +
+                name +
+
+                "\nEmail: " +
+                email +
+
+                "\n\nMessage:\n" +
+                message
+
+            );
+
+
+        /*
+            Open the user's email application.
+        */
+
+        window.location.href =
+            `mailto:${myEmail}?subject=${subject}&body=${emailBody}`;
+
 
         formMessage.textContent =
-            "Please fill all fields.";
-
-        return;
+            "Opening your email application...";
 
     }
-
-
-    /*
-        CHANGE THIS EMAIL
-        TO YOUR REAL EMAIL ADDRESS.
-    */
-
-    const myEmail =
-        "your-email@example.com";
-
-
-    /*
-        Create email subject
-    */
-
-    const subject =
-        encodeURIComponent(
-            "Portfolio message from " +
-            name
-        );
-
-
-    /*
-        Create email body
-    */
-
-    const emailBody =
-        encodeURIComponent(
-
-            "Name: " +
-            name +
-
-            "\nEmail: " +
-            email +
-
-            "\n\nMessage:\n" +
-            message
-
-        );
-
-
-    /*
-        Open default email application
-    */
-
-    window.location.href =
-        `mailto:${myEmail}?subject=${subject}&body=${emailBody}`;
-
-
-    formMessage.textContent =
-        "Opening your email application...";
-
-});
+);
 
 
 /* =========================================================
@@ -510,7 +708,7 @@ year.textContent =
 
 
 /* =========================================================
-   INITIAL ACTIVE NAVIGATION
+   INITIAL ACTIVE LINK
 ========================================================= */
 
 setActiveLink("home");
