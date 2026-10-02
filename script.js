@@ -1,714 +1,167 @@
-/* =========================================================
-   THEME
-========================================================= */
-
 const body = document.body;
+const themeToggle = document.getElementById("themeToggle");
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+const navbar = document.getElementById("navbar");
+const typing = document.getElementById("typing");
+const form = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
+const year = document.getElementById("year");
 
-const themeToggle =
-    document.getElementById("themeToggle");
-
-
-const savedTheme =
-    localStorage.getItem("theme");
-
-
+const savedTheme = localStorage.getItem("theme");
 if (savedTheme === "light") {
-
     body.classList.add("light");
-
     themeToggle.textContent = "☀";
-
 }
-
-
-/* Theme button */
 
 themeToggle.addEventListener("click", () => {
-
     body.classList.toggle("light");
-
-
-    const isLight =
-        body.classList.contains("light");
-
-
-    themeToggle.textContent =
-        isLight ? "☀" : "☾";
-
-
-    localStorage.setItem(
-        "theme",
-        isLight ? "light" : "dark"
-    );
-
+    const isLight = body.classList.contains("light");
+    themeToggle.textContent = isLight ? "☀" : "☾";
+    localStorage.setItem("theme", isLight ? "light" : "dark");
 });
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const menuToggle =
-    document.getElementById("menuToggle");
-
-
-const navLinks =
-    document.getElementById("navLinks");
-
 
 menuToggle.addEventListener("click", () => {
-
     navLinks.classList.toggle("open");
-
+    menuToggle.textContent = navLinks.classList.contains("open") ? "✕" : "☰";
 });
 
-
-/* Close mobile menu after clicking a link */
-
-navLinks
-    .querySelectorAll("a")
-    .forEach((link) => {
-
-        link.addEventListener("click", () => {
-
-            navLinks.classList.remove("open");
-
-        });
-
+navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.textContent = "☰";
     });
+});
 
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-const navItems =
-    document.querySelectorAll(
-        "#navLinks a"
-    );
-
-
-const sections =
-    document.querySelectorAll(
-        "section[id]"
-    );
-
-
-/*
-    Change active navigation item.
-*/
-
-function setActiveLink(sectionId) {
-
-    navItems.forEach((link) => {
-
-        link.classList.remove("active");
-
-
-        const linkTarget =
-            link
-                .getAttribute("href")
-                .replace("#", "");
-
-
-        if (
-            linkTarget === sectionId
-        ) {
-
-            link.classList.add("active");
-
-        }
-
-    });
-
+function smoothScrollTo(target) {
+    if (!target) return;
+    const top = target.getBoundingClientRect().top + window.scrollY - 96;
+    window.scrollTo({ top, behavior: "smooth" });
 }
 
-
-/* =========================================================
-   SUPER SMOOTH NAVIGATION
-========================================================= */
-
-navItems.forEach((link) => {
-
-    link.addEventListener(
-        "click",
-        function (event) {
-
-            event.preventDefault();
-
-
-            const targetId =
-                this
-                    .getAttribute("href")
-                    .substring(1);
-
-
-            const target =
-                document.getElementById(targetId);
-
-
-            if (!target) {
-                return;
-            }
-
-
-            /*
-                Immediately move active underline.
-            */
-
-            setActiveLink(targetId);
-
-
-            /*
-                Calculate position while accounting
-                for the fixed navbar.
-            */
-
-            const navbarHeight = 78;
-
-
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.scrollY -
-                navbarHeight;
-
-
-            /*
-                Native browser smooth scrolling.
-            */
-
-            window.scrollTo({
-
-                top:
-                    targetPosition,
-
-                behavior:
-                    "smooth"
-
-            });
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   ALL INTERNAL LINKS
-   SMOOTH SCROLL
-========================================================= */
-
-document
-    .querySelectorAll('a[href^="#"]')
-    .forEach((link) => {
-
-        link.addEventListener(
-            "click",
-            function (event) {
-
-                const href =
-                    this.getAttribute("href");
-
-
-                /*
-                    Ignore empty "#"
-                */
-
-                if (
-                    !href ||
-                    href === "#"
-                ) {
-
-                    return;
-
-                }
-
-
-                /*
-                    Navigation links are already
-                    handled above.
-                */
-
-                if (
-                    this.closest("#navLinks")
-                ) {
-
-                    return;
-
-                }
-
-
-                const target =
-                    document.getElementById(
-                        href.substring(1)
-                    );
-
-
-                if (!target) {
-
-                    return;
-
-                }
-
-
-                event.preventDefault();
-
-
-                const navbarHeight = 78;
-
-
-                const targetPosition =
-                    target.getBoundingClientRect().top +
-                    window.scrollY -
-                    navbarHeight;
-
-
-                window.scrollTo({
-
-                    top:
-                        targetPosition,
-
-                    behavior:
-                        "smooth"
-
-                });
-
-            }
-        );
-
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (event) => {
+        const href = link.getAttribute("href");
+        if (!href || href === "#") return;
+        const target = document.getElementById(href.slice(1));
+        if (!target) return;
+        event.preventDefault();
+        smoothScrollTo(target);
     });
-
-
-/* =========================================================
-   NAVBAR SCROLL EFFECT
-========================================================= */
-
-const navbar =
-    document.getElementById("navbar");
-
+});
 
 function updateNavbar() {
-
-    if (
-        window.scrollY > 30
-    ) {
-
-        navbar.classList.add("scrolled");
-
-    } else {
-
-        navbar.classList.remove("scrolled");
-
-    }
-
+    navbar.classList.toggle("scrolled", window.scrollY > 30);
 }
-
-
-window.addEventListener(
-    "scroll",
-    updateNavbar,
-    { passive: true }
-);
-
-
+window.addEventListener("scroll", updateNavbar, { passive: true });
 updateNavbar();
 
-
-/* =========================================================
-   ACTIVE SECTION WHILE SCROLLING
-========================================================= */
-
-const sectionObserver =
-    new IntersectionObserver(
-
-        (entries) => {
-
-            entries.forEach((entry) => {
-
-                if (
-                    entry.isIntersecting
-                ) {
-
-                    setActiveLink(
-                        entry.target.id
-                    );
-
-                }
-
-            });
-
-        },
-
-        {
-
-            root: null,
-
-            /*
-                This makes the active line
-                follow the section currently
-                near the center of the screen.
-            */
-
-            rootMargin:
-                "-35% 0px -55% 0px",
-
-            threshold: 0
-
-        }
-
-    );
-
-
-sections.forEach((section) => {
-
-    sectionObserver.observe(section);
-
-});
-
-
-/* =========================================================
-   TYPING ANIMATION
-========================================================= */
-
-const typing =
-    document.getElementById("typing");
-
-
-const roles = [
-
-    "web experiences.",
-
-    "AI-powered tools.",
-
-    "Android apps.",
-
-    "creative products."
-
-];
-
-
-let roleIndex = 0;
-
-let charIndex = 0;
-
-let deleting = false;
-
-
-function typeEffect() {
-
-    const currentRole =
-        roles[roleIndex];
-
-
-    /* Typing */
-
-    if (!deleting) {
-
-        typing.textContent =
-            currentRole.substring(
-                0,
-                charIndex + 1
-            );
-
-
-        charIndex++;
-
-
-        /*
-            Pause when complete.
-        */
-
-        if (
-            charIndex ===
-            currentRole.length
-        ) {
-
-            deleting = true;
-
-
-            setTimeout(
-                typeEffect,
-                1500
-            );
-
-
-            return;
-
-        }
-
-    }
-
-
-    /* Deleting */
-
-    else {
-
-        typing.textContent =
-            currentRole.substring(
-                0,
-                charIndex - 1
-            );
-
-
-        charIndex--;
-
-
-        /*
-            Go to next sentence.
-        */
-
-        if (
-            charIndex === 0
-        ) {
-
-            deleting = false;
-
-            roleIndex++;
-
-
-            if (
-                roleIndex >=
-                roles.length
-            ) {
-
-                roleIndex = 0;
-
-            }
-
-        }
-
-    }
-
-
-    setTimeout(
-
-        typeEffect,
-
-        deleting
-            ? 40
-            : 70
-
-    );
-
+const navItems = [...document.querySelectorAll("#navLinks a")];
+const sections = [...document.querySelectorAll("main section[id]")];
+
+function setActiveLink(sectionId) {
+    navItems.forEach((link) => {
+        const target = link.getAttribute("href").slice(1);
+        link.classList.toggle("active", target === sectionId);
+    });
 }
 
+const sectionObserver = new IntersectionObserver(
+    (entries) => {
+        const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible) setActiveLink(visible.target.id);
+    },
+    { rootMargin: "-30% 0px -55% 0px", threshold: [0, 0.15, 0.4, 0.7] }
+);
+
+sections.forEach((section) => sectionObserver.observe(section));
+setActiveLink("home");
+
+const roles = [
+    "web experiences.",
+    "AI-powered tools.",
+    "Android apps.",
+    "creative products."
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect() {
+    const current = roles[roleIndex];
+
+    if (!deleting) {
+        typing.textContent = current.slice(0, charIndex + 1);
+        charIndex += 1;
+
+        if (charIndex === current.length) {
+            deleting = true;
+            setTimeout(typeEffect, 1200);
+            return;
+        }
+    } else {
+        typing.textContent = current.slice(0, charIndex - 1);
+        charIndex -= 1;
+
+        if (charIndex === 0) {
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+        }
+    }
+
+    setTimeout(typeEffect, deleting ? 35 : 65);
+}
 
 typeEffect();
 
-
-/* =========================================================
-   PROJECT FILTER
-========================================================= */
-
-const filterButtons =
-    document.querySelectorAll(
-        ".filter"
-    );
-
-
-const projects =
-    document.querySelectorAll(
-        ".project"
-    );
-
+const filterButtons = document.querySelectorAll(".filter");
+const projects = document.querySelectorAll(".project");
 
 filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
 
-    button.addEventListener(
-        "click",
-        () => {
+        const filter = button.dataset.filter;
 
-            /*
-                Remove active from all.
-            */
-
-            filterButtons.forEach(
-                (btn) => {
-
-                    btn.classList.remove(
-                        "active"
-                    );
-
-                }
-            );
-
-
-            /*
-                Activate selected filter.
-            */
-
-            button.classList.add(
-                "active"
-            );
-
-
-            const filter =
-                button.dataset.filter;
-
-
-            projects.forEach(
-                (project) => {
-
-                    const category =
-                        project.dataset.category;
-
-
-                    if (
-                        filter === "all" ||
-                        category === filter
-                    ) {
-
-                        project.style.display =
-                            "flex";
-
-                    } else {
-
-                        project.style.display =
-                            "none";
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
+        projects.forEach((project) => {
+            const visible = filter === "all" || project.dataset.category === filter;
+            project.style.display = visible ? "" : "none";
+        });
+    });
 });
 
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-/* =========================================================
-   CONTACT FORM
-========================================================= */
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-const form =
-    document.getElementById(
-        "contactForm"
-    );
-
-
-const formMessage =
-    document.getElementById(
-        "formMessage"
-    );
-
-
-form.addEventListener(
-    "submit",
-    (event) => {
-
-        event.preventDefault();
-
-
-        const name =
-            document
-                .getElementById("name")
-                .value
-                .trim();
-
-
-        const email =
-            document
-                .getElementById("email")
-                .value
-                .trim();
-
-
-        const message =
-            document
-                .getElementById("message")
-                .value
-                .trim();
-
-
-        /*
-            Validate form.
-        */
-
-        if (
-            !name ||
-            !email ||
-            !message
-        ) {
-
-            formMessage.textContent =
-                "Please fill all fields.";
-
-            return;
-
-        }
-
-
-        /*
-            IMPORTANT:
-
-            Replace this with YOUR
-            actual email address.
-        */
-
-        const myEmail =
-            "v7182616@gmail.com";
-
-
-        /*
-            Email subject.
-        */
-
-        const subject =
-            encodeURIComponent(
-                "Portfolio message from " +
-                name
-            );
-
-
-        /*
-            Email body.
-        */
-
-        const emailBody =
-            encodeURIComponent(
-
-                "Name: " +
-                name +
-
-                "\nEmail: " +
-                email +
-
-                "\n\nMessage:\n" +
-                message
-
-            );
-
-
-        /*
-            Open the user's email application.
-        */
-
-        window.location.href =
-            `mailto:${myEmail}?subject=${subject}&body=${emailBody}`;
-
-
-        formMessage.textContent =
-            "Opening your email application...";
-
+    if (!name || !email || !message) {
+        formMessage.textContent = "Please fill all fields.";
+        return;
     }
-);
 
+    const myEmail = "v7182616@gmail.com";
+    const subject = encodeURIComponent("Portfolio message from " + name);
+    const emailBody = encodeURIComponent(
+        "Name: " + name +
+        "\nEmail: " + email +
+        "\n\nMessage:\n" + message
+    );
 
-/* =========================================================
-   FOOTER YEAR
-========================================================= */
+    formMessage.textContent = "Opening your email application...";
+    window.location.href = `mailto:${myEmail}?subject=${subject}&body=${emailBody}`;
+});
 
-const year =
-    document.getElementById("year");
+year.textContent = new Date().getFullYear();
 
-
-year.textContent =
-    new Date().getFullYear();
-
-
-/* =========================================================
-   INITIAL ACTIVE LINK
-========================================================= */
-
-setActiveLink("home");
+document.querySelectorAll(".technology-list span, .stat, .project, .bento-card").forEach((element) => {
+    element.addEventListener("mouseenter", () => element.classList.add("hovered"));
+    element.addEventListener("mouseleave", () => element.classList.remove("hovered"));
+});
