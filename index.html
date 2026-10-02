@@ -1,365 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vamsi - Developer Portfolio">
-    <title>Vamsi | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Vamsi — Developer Portfolio">
+<meta name="theme-color" content="#f5f5f7">
+<title>Vamsi | Developer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="navbar" id="navbar">
-        <div class="logo">V<span>.</span></div>
+<div class="ambient ambient-one"></div><div class="ambient ambient-two"></div><div class="ambient ambient-three"></div>
 
-        <nav id="navLinks">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#journey">Journey</a>
-            <a href="#contact">Contact</a>
-        </nav>
+<header class="navbar" id="navbar">
+  <a class="logo" href="#home" aria-label="Vamsi home"><span>V</span></a>
+  <nav id="navLinks">
+    <a class="active" href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+    <a href="#projects">Projects</a><a href="#journey">Journey</a><a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <button id="themeToggle" class="icon-btn" aria-label="Toggle appearance">☼</button>
+    <button id="menuToggle" class="icon-btn menu-btn" aria-label="Open menu">☰</button>
+  </div>
+</header>
 
-        <div class="nav-actions">
-            <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">☾</button>
-            <button id="menuToggle" class="menu-btn" aria-label="Open menu">☰</button>
-        </div>
-    </header>
+<main>
+<section class="hero section-shell" id="home">
+  <div class="hero-copy">
+    <div class="status-pill"><span></span> Available for opportunities</div>
+    <p class="eyebrow">HELLO, I'M VAMSI</p>
+    <h1>Build ideas.<br><em>Make them real.</em></h1>
+    <p class="hero-description">A developer exploring web, AI, Android and automation — building useful digital experiences one project at a time.</p>
+    <div class="hero-actions">
+      <a class="glass-button filled" href="#projects">Explore my work <span>↗</span></a>
+      <a class="glass-button" href="#contact">Let's talk <span>→</span></a>
+    </div>
+    <div class="social-links">
+      <a href="https://github.com/Vamsi541-hub" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="mailto:v7182616@gmail.com">Email</a>
+    </div>
+  </div>
 
-    <main>
-        <section class="hero" id="home">
-            <div class="hero-text">
-                <p class="small-title">HELLO, I'M VAMSI</p>
+  <div class="hero-visual">
+    <div class="spatial-card main-card tilt-card">
+      <div class="card-top"><span class="mini-label">VAMSI / 01</span><span class="live-dot"></span></div>
+      <div class="profile-orb"><span>V</span></div>
+      <div class="card-bottom"><strong>Developer</strong><span>AI · Web · Apps</span></div>
+    </div>
+    <div class="floating-card float-one"><span class="glass-icon">✦</span><div><strong>AI / ML</strong><small>Exploring intelligence</small></div></div>
+    <div class="floating-card float-two"><span class="glass-icon">⌘</span><div><strong>Build mode</strong><small>Always learning</small></div></div>
+    <div class="depth-ring ring-one"></div><div class="depth-ring ring-two"></div>
+  </div>
+</section>
 
-                <h1>
-                    Build.<br>
-                    Break.<br>
-                    <span class="kinetic-word">Repeat.</span>
-                </h1>
+<div class="glass-strip"><div>DESIGN</div><span>✦</span><div>CODE</div><span>✦</span><div>AI</div><span>✦</span><div>BUILD</div><span>✦</span><div>LEARN</div><span>✦</span><div>DESIGN</div><span>✦</span><div>CODE</div><span>✦</span><div>AI</div></div>
 
-                <h2>
-                    I build <span id="typing"></span><span class="cursor">|</span>
-                </h2>
+<section class="section-shell section" id="about">
+  <div class="section-heading"><div><span class="eyebrow">01 / ABOUT</span><h2>Less noise.<br><em>More meaning.</em></h2></div><p>I like simple interfaces, useful software and the process of turning a rough idea into something people can actually use.</p></div>
+  <div class="about-grid">
+    <article class="glass-panel about-main"><span class="panel-icon">⌁</span><p>I'm a technology enthusiast who enjoys experimenting with AI, web development, Android development and practical automation.</p><p>I believe in learning by building. Every project is a chance to understand something new, improve my skills and create something better than the last version.</p><a href="#contact" class="text-link">Work with me <span>→</span></a></article>
+    <div class="stat-grid">
+      <article class="glass-panel stat-card"><strong>10<span>+</span></strong><small>PROJECTS</small></article>
+      <article class="glass-panel stat-card accent"><strong>5<span>+</span></strong><small>TECHNOLOGIES</small></article>
+      <article class="glass-panel stat-card"><strong>100<span>%</span></strong><small>CURIOUS</small></article>
+      <article class="glass-panel stat-card accent"><strong>∞</strong><small>LEARNING</small></article>
+    </div>
+  </div>
+</section>
 
-                <p class="hero-description">
-                    A technology-focused developer who enjoys turning ideas into useful digital experiences across web, AI, Android and automation.
-                </p>
+<section class="section-shell section" id="skills">
+  <div class="section-heading"><div><span class="eyebrow">02 / TOOLBOX</span><h2>Skills that<br><em>ship ideas.</em></h2></div><p>My current toolkit spans frontend, backend, AI experiments, computer vision and mobile development.</p></div>
+  <div class="skills-grid">
+    <article class="glass-panel skill-panel">
+      <div class="panel-header"><span>CORE SKILLS</span><span>01—05</span></div>
+      <div class="skill-row"><div><span>HTML / CSS</span><b>90%</b></div><i><span style="width:90%"></span></i></div>
+      <div class="skill-row"><div><span>JavaScript</span><b>82%</b></div><i><span style="width:82%"></span></i></div>
+      <div class="skill-row"><div><span>Python</span><b>85%</b></div><i><span style="width:85%"></span></i></div>
+      <div class="skill-row"><div><span>Android</span><b>76%</b></div><i><span style="width:76%"></span></i></div>
+      <div class="skill-row"><div><span>AI / ML</span><b>72%</b></div><i><span style="width:72%"></span></i></div>
+    </article>
+    <article class="glass-panel tech-panel"><div class="panel-header"><span>TECHNOLOGIES</span><span>∞</span></div><div class="tech-cloud"><span>Python</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>React</span><span>Flask</span><span>MySQL</span><span>OpenCV</span><span>YOLO</span><span>Android</span><span>Git</span><span>AI / ML</span></div></article>
+  </div>
+</section>
 
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn primary-btn">View Projects ↗</a>
-                    <a href="#contact" class="btn secondary-btn">Let's Talk</a>
-                </div>
+<section class="section-shell section" id="projects">
+  <div class="section-heading"><div><span class="eyebrow">03 / SELECTED WORK</span><h2>Things I've<br><em>built.</em></h2></div><p>A selection of projects across AI, web, mobile and automation.</p></div>
+  <div class="filter-bar"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="web">Web</button><button class="filter" data-filter="ai">AI</button><button class="filter" data-filter="app">Apps</button></div>
+  <div class="project-grid">
+    <article class="project-card glass-panel" data-category="web"><div class="project-index">01</div><div><small>WEB PLATFORM</small><h3>Agricultural Waste Hub</h3><p>A platform helping farmers manage agricultural waste and discover valorisation options using intelligent image analysis.</p></div><div class="project-tags"><span>Python</span><span>Flask</span><span>YOLO</span></div></article>
+    <article class="project-card glass-panel" data-category="app"><div class="project-index">02</div><div><small>ANDROID APP</small><h3>BikeService</h3><p>A lightweight vehicle service app with emergency assistance, service discovery, customisation and support.</p></div><div class="project-tags"><span>Android</span><span>API</span><span>UI/UX</span></div></article>
+    <article class="project-card glass-panel" data-category="ai"><div class="project-index">03</div><div><small>AI ASSISTANT</small><h3>J.A.R.V.I.S</h3><p>A Python voice assistant concept supporting speech recognition, automation, system control and AI-style interaction.</p></div><div class="project-tags"><span>Python</span><span>Speech</span><span>OpenCV</span></div></article>
+    <article class="project-card glass-panel" data-category="web"><div class="project-index">04</div><div><small>FRONTEND</small><h3>Music Streaming UI</h3><p>A responsive music interface with search, playlists, player controls and component-based design.</p></div><div class="project-tags"><span>React</span><span>Vite</span><span>CSS</span></div></article>
+    <article class="project-card glass-panel" data-category="ai"><div class="project-index">05</div><div><small>COMPUTER VISION</small><h3>Vision AI</h3><p>Computer vision experiments involving object detection, image processing and practical AI workflows.</p></div><div class="project-tags"><span>OpenCV</span><span>YOLO</span><span>Python</span></div></article>
+    <article class="project-card glass-panel" data-category="app"><div class="project-index">06</div><div><small>EXPERIMENT</small><h3>Smart Utility Tools</h3><p>Small automation and utility applications designed to solve everyday technical problems.</p></div><div class="project-tags"><span>Python</span><span>Automation</span></div></article>
+  </div>
+</section>
 
-                <div class="social-links">
-                    <a href="https://github.com/Vamsi541-hub" target="_blank" rel="noopener noreferrer">GH</a>
-                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">in</a>
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">IG</a>
-                    <a href="mailto:v7182616@gmail.com">@</a>
-                </div>
-            </div>
+<section class="section-shell section" id="journey">
+  <div class="section-heading"><div><span class="eyebrow">04 / JOURNEY</span><h2>Always<br><em>moving forward.</em></h2></div></div>
+  <div class="timeline">
+    <article class="timeline-item glass-panel"><span class="timeline-number">01</span><div><small>NOW</small><h3>Building & Learning</h3><p>Exploring full-stack development, AI, Android development and new technologies.</p></div></article>
+    <article class="timeline-item glass-panel"><span class="timeline-number">02</span><div><small>RECENT</small><h3>Project Development</h3><p>Worked on vehicle-service applications, voice assistants, music platforms and AI projects.</p></div></article>
+    <article class="timeline-item glass-panel"><span class="timeline-number">03</span><div><small>START</small><h3>Started Coding</h3><p>Started learning programming, web development, databases and software development.</p></div></article>
+  </div>
+</section>
 
-            <div class="hero-side">
-                <div class="hero-bento">
-                    <article class="bento-card bento-big">
-                        <div>
-                            <div class="bento-number">01 / ME</div>
-                            <h3>Developer in progress.</h3>
-                            <p>Learning by building, one project at a time.</p>
-                        </div>
+<section class="section-shell section contact-section" id="contact">
+  <div class="contact-panel glass-panel">
+    <div class="contact-copy"><span class="eyebrow">05 / CONTACT</span><h2>Have an idea?<br><em>Let's talk.</em></h2><p>Project, collaboration, internship or just want to talk tech? Send me a message.</p><div class="contact-orb">✦</div></div>
+    <form id="contactForm">
+      <label for="name">Name</label><input id="name" type="text" placeholder="Your name" required>
+      <label for="email">Email</label><input id="email" type="email" placeholder="your@email.com" required>
+      <label for="message">Message</label><textarea id="message" rows="5" placeholder="Tell me about your idea..." required></textarea>
+      <button class="glass-button filled submit-btn" type="submit">Send message <span>↗</span></button><p id="formMessage"></p>
+    </form>
+  </div>
+</section>
+</main>
 
-                        <div class="avatar">V</div>
-
-                        <span class="orbit-chip chip-1">AI / ML</span>
-                        <span class="orbit-chip chip-2">WEB</span>
-                        <span class="orbit-chip chip-3">ANDROID</span>
-                    </article>
-
-                    <article class="bento-card">
-                        <div class="bento-number">02 / FOCUS</div>
-                        <h3>AI × Code</h3>
-                        <p>Computer vision, assistants, automation and experiments.</p>
-                    </article>
-
-                    <article class="bento-card">
-                        <div class="bento-number">03 / STACK</div>
-                        <h3>Python + JS</h3>
-                        <p>Flask, React, MySQL, OpenCV, YOLO and more.</p>
-                    </article>
-
-                    <article class="bento-card bento-wide">
-                        <div class="bento-number">04 / CURRENT MODE</div>
-                        <h3>BUILDING SOMETHING NEW<span style="color:var(--accent)">_</span></h3>
-                    </article>
-                </div>
-            </div>
-
-            <a href="#about" class="scroll-down" aria-label="Scroll to about">↓</a>
-        </section>
-
-        <div class="ticker" aria-hidden="true">
-            <div class="ticker-track">
-                <span>DESIGN</span><span class="dot">✦</span>
-                <span>CODE</span><span class="dot">✦</span>
-                <span>AI</span><span class="dot">✦</span>
-                <span>BUILD</span><span class="dot">✦</span>
-                <span>LEARN</span><span class="dot">✦</span>
-                <span>REPEAT</span><span class="dot">✦</span>
-                <span>DESIGN</span><span class="dot">✦</span>
-                <span>CODE</span><span class="dot">✦</span>
-                <span>AI</span><span class="dot">✦</span>
-                <span>BUILD</span><span class="dot">✦</span>
-                <span>LEARN</span><span class="dot">✦</span>
-                <span>REPEAT</span><span class="dot">✦</span>
-            </div>
-        </div>
-
-        <section class="section" id="about">
-            <div class="section-title">
-                <div>
-                    <p>WHO I AM</p>
-                    <h2>About <span>Me</span></h2>
-                </div>
-            </div>
-
-            <div class="about-container">
-                <div class="about-card">
-                    <p>
-                        I'm a technology enthusiast who enjoys turning ideas into real applications. I like experimenting with AI, web development, Android development and practical automation.
-                    </p>
-                    <p>
-                        I believe in learning by building. Every project gives me an opportunity to understand something new and improve my development skills.
-                    </p>
-                    <a href="#contact" class="text-link">Let's work together →</a>
-                </div>
-
-                <div class="stats">
-                    <div class="stat"><h3>10+</h3><p>PROJECTS</p></div>
-                    <div class="stat"><h3>5+</h3><p>TECHNOLOGIES</p></div>
-                    <div class="stat"><h3>100%</h3><p>CURIOUS</p></div>
-                    <div class="stat"><h3>∞</h3><p>LEARNING</p></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="skills">
-            <div class="section-title">
-                <div>
-                    <p>MY TOOLBOX</p>
-                    <h2>Skills & <span>Technologies</span></h2>
-                </div>
-            </div>
-
-            <div class="skills-container">
-                <div class="skill-bars">
-                    <div class="skill">
-                        <div class="skill-info"><span>HTML / CSS</span><span>90%</span></div>
-                        <div class="progress"><div style="width:90%"></div></div>
-                    </div>
-                    <div class="skill">
-                        <div class="skill-info"><span>JavaScript</span><span>82%</span></div>
-                        <div class="progress"><div style="width:82%"></div></div>
-                    </div>
-                    <div class="skill">
-                        <div class="skill-info"><span>Python</span><span>85%</span></div>
-                        <div class="progress"><div style="width:85%"></div></div>
-                    </div>
-                    <div class="skill">
-                        <div class="skill-info"><span>Android Development</span><span>76%</span></div>
-                        <div class="progress"><div style="width:76%"></div></div>
-                    </div>
-                    <div class="skill">
-                        <div class="skill-info"><span>AI / ML</span><span>72%</span></div>
-                        <div class="progress"><div style="width:72%"></div></div>
-                    </div>
-                </div>
-
-                <div class="technology-list">
-                    <span>Python</span>
-                    <span>JavaScript</span>
-                    <span>HTML5</span>
-                    <span>CSS3</span>
-                    <span>React</span>
-                    <span>Flask</span>
-                    <span>MySQL</span>
-                    <span>OpenCV</span>
-                    <span>YOLO</span>
-                    <span>Android</span>
-                    <span>Git</span>
-                    <span>AI / ML</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="projects">
-            <div class="section-title">
-                <div>
-                    <p>MY WORK</p>
-                    <h2>Featured <span>Projects</span></h2>
-                </div>
-            </div>
-
-            <div class="filter-buttons">
-                <button class="filter active" data-filter="all">All</button>
-                <button class="filter" data-filter="web">Web</button>
-                <button class="filter" data-filter="ai">AI</button>
-                <button class="filter" data-filter="app">Apps</button>
-            </div>
-
-            <div class="projects">
-                <article class="project" data-category="web">
-                    <div>
-                        <div class="project-number">01</div>
-                        <div class="project-content">
-                            <small>WEB PLATFORM</small>
-                            <h3>Agricultural Waste Hub</h3>
-                            <p>A web platform that helps farmers manage agricultural waste and discover possible waste valorisation solutions using intelligent image analysis.</p>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span>Python</span><span>Flask</span><span>MySQL</span><span>YOLO</span>
-                    </div>
-                </article>
-
-                <article class="project" data-category="app">
-                    <div>
-                        <div class="project-number">02</div>
-                        <div class="project-content">
-                            <small>ANDROID APP</small>
-                            <h3>BikeService</h3>
-                            <p>A lightweight vehicle service application with emergency assistance, service discovery, vehicle customisation and support features.</p>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span>Android</span><span>Java</span><span>API</span><span>UI/UX</span>
-                    </div>
-                </article>
-
-                <article class="project" data-category="ai">
-                    <div>
-                        <div class="project-number">03</div>
-                        <div class="project-content">
-                            <small>AI ASSISTANT</small>
-                            <h3>J.A.R.V.I.S</h3>
-                            <p>A Python-based voice assistant concept that supports speech recognition, automation, system control and AI-style interaction.</p>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span>Python</span><span>Speech</span><span>Automation</span><span>OpenCV</span>
-                    </div>
-                </article>
-
-                <article class="project" data-category="web">
-                    <div>
-                        <div class="project-number">04</div>
-                        <div class="project-content">
-                            <small>FRONTEND</small>
-                            <h3>Music Streaming UI</h3>
-                            <p>A responsive music application interface with search, playlists, player controls and modern component-based design.</p>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span>React</span><span>Vite</span><span>CSS</span><span>API</span>
-                    </div>
-                </article>
-
-                <article class="project" data-category="ai">
-                    <div>
-                        <div class="project-number">05</div>
-                        <div class="project-content">
-                            <small>COMPUTER VISION</small>
-                            <h3>Vision AI</h3>
-                            <p>Computer vision experiments involving object detection, image processing and practical AI workflows.</p>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span>OpenCV</span><span>YOLO</span><span>Python</span>
-                    </div>
-                </article>
-
-                <article class="project" data-category="app">
-                    <div>
-                        <div class="project-number">06</div>
-                        <div class="project-content">
-                            <small>EXPERIMENT</small>
-                            <h3>Smart Utility Tools</h3>
-                            <p>Small automation and utility applications designed to solve everyday technical problems.</p>
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span>Python</span><span>Automation</span><span>Tools</span>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="section" id="journey">
-            <div class="section-title">
-                <div>
-                    <p>MY ROAD</p>
-                    <h2>My <span>Journey</span></h2>
-                </div>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">NOW</div>
-                    <div class="timeline-card">
-                        <h3>Building & Learning</h3>
-                        <p>Exploring full-stack development, AI, Android development and new technologies.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">RECENT</div>
-                    <div class="timeline-card">
-                        <h3>Project Development</h3>
-                        <p>Worked on vehicle-service applications, voice assistants, music platforms and AI projects.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">START</div>
-                    <div class="timeline-card">
-                        <h3>Started Coding</h3>
-                        <p>Started learning programming, web development, databases and software development.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="contact">
-            <div class="contact-container">
-                <div class="contact-info">
-                    <p class="small-title">LET'S BUILD SOMETHING</p>
-                    <h2>Have an idea?<span class="kinetic-word">Let's talk.</span></h2>
-                    <p>Have a project, collaboration opportunity, internship opportunity or just want to talk tech? Send me a message.</p>
-                </div>
-
-                <form id="contactForm">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" placeholder="Your name" required>
-
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="your@email.com" required>
-
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="6" placeholder="Tell me about your project..." required></textarea>
-
-                    <button type="submit" class="btn primary-btn">Send Message ↗</button>
-                    <p id="formMessage"></p>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>© <span id="year"></span> Vamsi. Built with HTML, CSS & JavaScript.</p>
-        <a href="#home">Back to top ↑</a>
-    </footer>
-
-    <script src="script.js"></script>
+<footer class="section-shell"><span>© <span id="year"></span> Vamsi</span><span>Designed with clarity · Built with code</span><a href="#home">Back to top ↑</a></footer>
+<script src="script.js"></script>
 </body>
 </html>
