@@ -2,6 +2,7 @@ const body=document.body;
 const themeToggle=document.getElementById("themeToggle");
 const menuToggle=document.getElementById("menuToggle");
 const navLinks=document.getElementById("navLinks");
+const navPill=document.querySelector("#navLinks");
 const navbar=document.getElementById("navbar");
 const form=document.getElementById("contactForm");
 const formMessage=document.getElementById("formMessage");
@@ -41,13 +42,18 @@ window.addEventListener("scroll",()=>{
 },{passive:true});
 
 const sections=[...document.querySelectorAll("main section[id]")];
+function moveNavPill(link){ if(!link||window.innerWidth<=700)return; const navRect=navLinks.getBoundingClientRect(); const rect=link.getBoundingClientRect(); navLinks.style.setProperty("--pill-left",(rect.left-navRect.left)+"px"); navLinks.style.setProperty("--pill-width",rect.width+"px"); }
+function syncNavPill(){ const active=navLinks.querySelector("a.active")||navLinks.querySelector("a"); moveNavPill(active); }
+window.addEventListener("resize",syncNavPill);
 const links=[...navLinks.querySelectorAll("a")];
 const observer=new IntersectionObserver(entries=>{
  const visible=entries.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
  if(!visible)return;
  links.forEach(link=>link.classList.toggle("active",link.getAttribute("href")==="#"+visible.target.id));
+ moveNavPill(navLinks.querySelector("a.active"));
 },{rootMargin:"-30% 0px -55% 0px",threshold:[.1,.35,.6]});
 sections.forEach(s=>observer.observe(s));
+requestAnimationFrame(syncNavPill);
 
 document.querySelectorAll(".filter").forEach(button=>{
  button.addEventListener("click",()=>{
