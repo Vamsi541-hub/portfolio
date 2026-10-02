@@ -27,15 +27,18 @@ const sections=[...document.querySelectorAll("main section[id]")];
 
 function moveNavPill(link){
  if(!link||window.innerWidth<=700)return;
- const navRect=navLinks.getBoundingClientRect();
- const rect=link.getBoundingClientRect();
- navLinks.style.setProperty("--pill-left",`${rect.left-navRect.left}px`);
- navLinks.style.setProperty("--pill-width",`${rect.width}px`);
+ const left=link.offsetLeft;
+ const width=link.offsetWidth;
+ navLinks.style.setProperty("--pill-left",left+"px");
+ navLinks.style.setProperty("--pill-width",width+"px");
 }
 
+let activeLink=null;
+
 function setActiveSection(id){
- const link=links.find(a=>a.getAttribute("href")==="#"+id);
- if(!link)return;
+ const link=links.find(a=>a.getAttribute("href")==="#" + id);
+ if(!link||link===activeLink)return;
+ activeLink=link;
  links.forEach(a=>a.classList.toggle("active",a===link));
  moveNavPill(link);
 }
